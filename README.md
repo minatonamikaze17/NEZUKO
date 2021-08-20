@@ -1,5 +1,6 @@
 <h1>Ohto Ai Plays <a href='https://github.com/tgcalls/awesome-tgcalls'><img src='https://awesome.re/mentioned-badge-flat.svg'></a></h1>
 
+
 <p align='center'>
 <img src="https://i.ibb.co/R0Vh3rW/IMG-20210808-131839-removebg-preview.png" alt="ohto-ai-kawaaii-pic" border="0" widht='223.5' height='176'>
 </p>
