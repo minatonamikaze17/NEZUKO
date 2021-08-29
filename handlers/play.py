@@ -4,10 +4,11 @@ from sql import auth as sql2
 from pyrogram import Client, filters
 from pyrogram.types import Message, Voice
 from youtube_search import YoutubeSearch 
-from callsmusic import mp, quu
+from callsmusic import mp, quu, block_chat
 import callsmusic
 import converter
-from pyrogram.errors import PeerIdInvalid
+from pyrogram.errors import PeerIdInvalid, ChannelInvalid
+from pyrogram.errors import exceptions
 from downloaders import youtube
 from pyrogram.types import (InlineKeyboardMarkup, InlineKeyboardButton)
 from config import BOT_NAME as bn, DURATION_LIMIT
@@ -162,10 +163,20 @@ def erro(mid, fp, ru):
  
 
 @Client.on_message(filters.command(["play", f"play@{BOT_USERNAME}"]) & other_filters)
+@errors
 @authorized_users_only2
 async def play(_, message: Message):
+    if message.chat.id in block_chat:
+      return await message.reply('Seems like there is a video stream going on...')
     audio = (message.reply_to_message.audio or message.reply_to_message.voice) if message.reply_to_message else None
-    group_call = await mp.call(message.chat.id)
+    try:
+      group_call = await mp.call(message.chat.id)
+    except RuntimeError:
+        return await message.reply_text('The vc seems to be off.....')
+    except ChannelInvalid:
+        return await message.reply_text('Seems like my assistant is not in the chat!')
+    except Exception as e:
+        return await message.reply_text(f'{type(e).__name__}: {e}')
     req_name = f"Requested By: {message.from_user.first_name}\n"
     req_user = f"Requested By: [{message.from_user.first_name}](tg://user?id={message.from_user.id})\n"
     url = get_url(message)
