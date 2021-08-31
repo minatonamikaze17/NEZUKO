@@ -47,7 +47,7 @@ class Music(object):
     if chat_id in GROUP_CALL:
       return GROUP_CALL[chat_id]
     else:
-      gp = GroupCallFactory(client,outgoing_audio_bitrate_kbit=320).get_file_group_call()
+      gp = GroupCallFactory(client,outgoing_audio_bitrate_kbit=320)
       gp = gp.get_raw_group_call(on_played_data=on_played_data)
       await gp.start(chat_id)
       GROUP_CALL[chat_id] = gp
