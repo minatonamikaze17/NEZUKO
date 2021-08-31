@@ -13,6 +13,9 @@ quu = {}
 block_chat = []
 GROUP_CALL = {}
 
+def on_played_data(_, leng):
+    pass
+
 async def on_stream_end(context, *args):
     chat_id = MAX_CHANNEL_ID - context.full_chat.id
     queues.task_done(chat_id)
@@ -44,7 +47,7 @@ class Music(object):
     if chat_id in GROUP_CALL:
       return GROUP_CALL[chat_id]
     else:
-      gp = GroupCallFactory(client,outgoing_audio_bitrate_kbit=320).get_file_group_call()
+      gp = GroupCallFactory(client,outgoing_audio_bitrate_kbit=320).get_file_group_call(on_played_data=on_played_data)
       await gp.start(chat_id)
       GROUP_CALL[chat_id] = gp
       crazy(chat_id)
