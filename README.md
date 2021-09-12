@@ -35,7 +35,7 @@ I recommend deploying on railways, because it lags relatively less than heroku (
 <li>Gather all the requirements mentioned above in the following manner in your notes app, and then after finishing copy the whole thing to your clipboard
 <img src='https://telegra.ph/file/4c45814b6ec4e96b686a2.jpg'>
 </li>
-<li>Go to railway, to the app you created, and then go to the tab <code>variables</code></li>
+<li>Go to railway, to the app you created, and  then go to the tab <code>variables</code></li>
 <li>Click on bulk import, a dialogue box would open up, now paste the whole copied vars that we copied in step 4</li>
 <li>Now go to the Deployment tab and then connect your github</li>
 <li>After connecting your github, connect the forked repo that you forked from me</li>
@@ -45,7 +45,7 @@ I recommend deploying on railways, because it lags relatively less than heroku (
 
 ### Deploy to Heroku: 
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Zack-Bloodshot/Ohto-Ai)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Zack-Bloodshot/Ohto-Ai) .
 
 ---
 
